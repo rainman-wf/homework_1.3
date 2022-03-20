@@ -61,27 +61,7 @@ fun transactionDetails(transferType: String = "VK Pay", prevTransfersSum: Int = 
 fun currencyFormat(amount: Int): String {
     val rubles = amount / 100
     val pennies = amount % 100
-    return "$rubles ${rublesFormat(rubles)} " +
-            if (pennies != 0) "${"%02d".format(pennies)} ${pennyFormat(pennies)}" else ""
-}
-
-fun rublesFormat(value: Int): String {
-    return if (value % 10 == 1 && value % 100 != 11) {
-        "рубль"
-    } else if (value % 10 in 2..4 && value % 100 !in 12..14) {
-        "рубля"
-    } else {
-        "рублей"
-    }
-}
-
-fun pennyFormat(value: Int): String {
-    return if (value % 10 == 1 && value % 100 != 11) {
-        "копйка"
-    } else if (value % 10 in 2..4 && value % 100 !in 12..14) {
-        "копейки"
-    } else {
-        "копеек"
-    }
+    return "$rubles руб. " +
+            if (pennies != 0) "${"%02d".format(pennies)} коп." else ""
 }
 
